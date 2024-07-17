@@ -12,19 +12,28 @@
     <main>
         <section class="cards-container">
             <div class="card">
-                <h2>Card Title 1</h2>
+                <div class="container">
+                    <h4><b>John Doe</b></h4>
+                    <p>Architect & Engineer</p>
+                </div>
             </div>
             <div class="card">
-                <h2>Card Title 2</h2>
+                <div class="container">
+                    <h4><b>John Doe</b></h4>
+                    <p>Architect & Engineer</p>
+                </div>
             </div>
             <div class="card">
-                <h2>Card Title 3</h2>
+                <div class="container">
+                    <h4><b>John Doe</b></h4>
+                    <p>Architect & Engineer</p>
+                </div>
             </div>
             <div class="card">
-                <h2>Card Title 4</h2>
-            </div>
-            <div class="card">
-                <h2>Card Title 5</h2>
+                <div class="container">
+                    <h4><b>John Doe</b></h4>
+                    <p>Architect & Engineer</p>
+                </div>
             </div>
         </section>
     </main>

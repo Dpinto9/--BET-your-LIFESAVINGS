@@ -27,6 +27,7 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Header with Wallet Balance</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
     <script>
         function updateWallet() {
             fetch('update_wallet.php')
@@ -42,7 +43,7 @@ $conn->close();
 </head>
 <body>
     <header>
-        <div class="logo">Logo</div>
+        <div class="logo"><a href="index.php">CassinadaFurira</a></div>
         <div class="wallet">Wallet: $<span id="walletAmount"><?php echo number_format($_SESSION['wallet_balance'], 2); ?></span></div>
         <div class="right-section">
             <div class="notification">
@@ -55,7 +56,7 @@ $conn->close();
                     <?php if ($_SESSION['role'] == 'admin'): ?>
                     <a href="admin_crud.php">Admin CRUD</a>
                     <?php endif; ?>
-                    <a href="logout.php">Logout</a>
+                    <a href="login.html">Logout</a>
                 </div>
             </div>
         </div>
