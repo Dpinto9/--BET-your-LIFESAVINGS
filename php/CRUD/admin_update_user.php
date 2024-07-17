@@ -1,7 +1,10 @@
 <?php
 session_start();
 include '../db.php'; // Adjust path if necessary
-
+if ($_SESSION['role'] != 'admin') {
+    header("Location: ../../index.php");
+    exit();
+}
 
 // Fetch User Data
 if (isset($_GET['id'])) {

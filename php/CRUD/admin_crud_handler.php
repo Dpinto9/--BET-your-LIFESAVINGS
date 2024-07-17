@@ -21,16 +21,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['create_user'])) {
 
     if ($stmt->execute()) {
         $_SESSION['create_message'] = "User created successfully!";
+        $stmt->close(); // Close the statement
+
+        // Redirect to admin_crud.php after successful creation
         header("Location: ../../admin_crud.php");
         exit();
     } else {
         $_SESSION['create_message'] = "Error: " . $stmt->error;
         header("Location: admin_create_user.php");
         exit();
+
     }
 
-    $stmt->close();
+    $stmt->close(); // Close the statement
 }
+
 
 // Handle Update
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_user'])) {
@@ -61,14 +66,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_user'])) {
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    $sql = "DELETE FROM users WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $id);
+    $sql_delete = "DELETE FROM users WHERE id = ?";
+    $stmt_delete = $conn->prepare($sql_delete);
+    $stmt_delete->bind_param("i", $id);
 
-    if ($stmt->execute()) {
-        $_SESSION['delete_message'] = "User deleted successfully!";
+    if ($stmt_delete->execute()) {
+        $stmt_delete->close();
+
+        // Reset auto-increment to the maximum id + 1
+        $sql_reset = "ALTER TABLE users AUTO_INCREMENT = (SELECT MAX(id) + 1 FROM users)";
+        if ($conn->query($sql_reset) === TRUE) {
+            $_SESSION['delete_message'] = "User deleted successfully!";
+        } else {
+            $_SESSION['delete_message'] = "Error resetting auto-increment: " . $conn->error;
+        }
     } else {
-        $_SESSION['delete_message'] = "Error: " . $stmt->error;
+        $_SESSION['delete_message'] = "Error deleting user: " . $stmt_delete->error;
     }
 
     $stmt->close();
