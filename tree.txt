@@ -1,0 +1,19 @@
+/ (raiz do seu site)
+├── css/
+│   └── forms.css
+│   └── style.css
+├── php/
+│   └── login_register/
+│    │          └── login.php
+│    │          └── register.php
+│   └── Crud/
+│    │          └── admin_create_user.php
+│    │          └── admin_uptade_user.php
+│    │          └── admin_crud_handler.php
+│   └── Html/
+│    │          └── header.php
+│   └── db.php
+├── index.php
+└── login.html
+└── register.html
+└── admin_crud.php
