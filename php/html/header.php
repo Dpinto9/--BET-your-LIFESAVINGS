@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['user_id'])) {
-    header("Location: ../../login.html");
+    header("Location: login.html");
     exit();
 }
 
@@ -18,6 +18,14 @@ if ($result->num_rows > 0) {
 }
 
 $conn->close();
+
+// Logout logic
+if (isset($_POST['logout'])) {
+    session_unset(); 
+    session_destroy(); 
+    header("Location: login.html");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -50,14 +58,16 @@ $conn->close();
                 <span class="icon">🔔</span>
             </div>
             <div class="profile-dropdown">
-                <span class="profile">Connected: <?php echo $_SESSION['username']; ?> ▼</span>
-                <div class="dropdown-content">
-                    <a href="profile.php">Profile</a>
-                    <?php if ($_SESSION['role'] == 'admin'): ?>
-                    <a href="admin_crud.php">Admin CRUD</a>
-                    <?php endif; ?>
-                    <a href="login.html">Logout</a>
-                </div>
+                <form method="post">
+                    <span class="profile">Connected: <?php echo $_SESSION['username']; ?> ▼</span>
+                    <div class="dropdown-content">
+                        <a href="profile.php">Profile</a>
+                        <?php if ($_SESSION['role'] == 'admin'): ?>
+                        <a href="admin_crud.php">Admin CRUD</a>
+                        <?php endif; ?>
+                        <button type="submit" name="logout">Logout</button>
+                    </div>
+                </form>
             </div>
         </div>
     </header>

@@ -72,3 +72,19 @@ header {
 .profile-dropdown:hover .dropdown-content {
     display: block;
 }
+
+.dropdown-content button[name="logout"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: lightcoral; 
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.dropdown-content button[name="logout"]:hover {
+    background-color: #c82333; 
+}
