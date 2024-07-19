@@ -1,0 +1,269 @@
+/* Title section */
+.title{
+    width: 60%;
+    margin: 20px auto; 
+    padding: 20px 0;
+    font-family: "Rowdies", sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+    font-style: normal;
+    text-align: center;
+}
+
+.title img{
+    width: 50%;
+}
+
+/* Main Section */
+.main-section {
+    width: 90%;
+    margin: 20px auto; 
+    padding: 20px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Card Styles */
+.card {
+    background-color: white;
+    border: 1px solid var(--dark-green);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card h3 {
+    font-family: "Rowdies", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-family: "Cinzel", serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Different Sizes for Cards */
+.card-large {
+    grid-column: span 2; 
+    grid-row: span 2; 
+}
+
+.card-medium {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.card-small {
+    grid-column: span 1; 
+    grid-row: span 1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1400px) {
+    .grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 1200px) {
+    .grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .card-large {
+        grid-column: span 1; 
+        grid-row: span 1; 
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    .card-large {
+        grid-column: span 1; 
+        grid-row: span 1;
+    }
+
+    .title h1 {
+        font-size: 2rem;
+    }
+}
+
+/* promoting section */
+ .promotions-section .br {
+    width: 80%;
+  }
+  
+  .scroller {
+    max-width: 300%;
+  }
+  
+  .scroller__inner {
+    padding-block: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+  
+  .scroller[data-animated="true"] {
+    overflow: hidden;
+    -webkit-mask: linear-gradient(
+      90deg,
+      transparent,
+      white 20%,
+      white 80%,
+      transparent
+    );
+    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+  }
+  
+  .scroller[data-animated="true"] .scroller__inner {
+    width: max-content;
+    flex-wrap: nowrap;
+    animation: scroll var(--_animation-duration, 40s)
+      var(--_animation-direction, forwards) linear infinite;
+  }
+  
+  .scroller[data-direction="right"] {
+    --_animation-direction: reverse;
+  }
+  
+  .scroller[data-direction="left"] {
+    --_animation-direction: forwards;
+  }
+  
+  .scroller[data-speed="fast"] {
+    --_animation-duration: 20s;
+  }
+  
+  .scroller[data-speed="slow"] {
+    --_animation-duration: 60s;
+  }
+  
+  @keyframes scroll {
+    to {
+      transform: translate(calc(-10% - 0.5rem));
+    }
+  }
+  
+/* Responsible Gaming Section */
+  .responsible-gaming-section {
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #161a1d;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 92%;
+  }
+  
+  .responsible-gaming-section h2, .testimonials-section h2 {
+    font-family: "Rowdies", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: black;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .responsible-gaming-section h2 {
+    text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  0px 0 #000; 
+     color: white;
+  }
+  
+  
+  .responsible-gaming-content {
+    font-family: "Cinzel", serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: white;
+    line-height: 1.6;
+  }
+  
+  .responsible-gaming-content p {
+    text-align: center;
+    font-weight: 700;
+    font-size: larger;
+  }
+  
+  .responsible-gaming-content ul {
+    list-style-type: disc;
+    margin-left: 10%;
+  }
+  
+  .responsible-gaming-content ul li {
+    margin-bottom: 10px;
+  }
+  
+  /* testimonial Section */
+  .testimonials-grid {
+    width: 70%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 20px;
+  }
+  
+  .testimonial-card {
+    background-color: white;
+    border: 1px solid var(--dark-green);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .testimonial-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .testimonial-card p {
+    font-family: "Cinzel", serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--dark-green);
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  .testimonial-card span {
+    font-family: "Cinzel", serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--green);
+  }
+  
+  .testimonial-card span {
+    display: block;
+    margin-top: 10px;
+    font-style: italic;
+    text-align: right;
+  }

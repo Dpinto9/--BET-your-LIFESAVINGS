@@ -3,6 +3,7 @@
     margin: 50px auto;
     background: white;
     padding: 20px;
+    border: 1px solid black;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
@@ -19,8 +20,9 @@ table {
 }
 
 thead {
-    background-color: #007bff;
-    color: white;
+    background-color: var(--darkgray);
+    color: var(--light-yellow);
+    opacity: 93%;
 }
 
 th, td {
@@ -31,11 +33,11 @@ th, td {
 
 /* Button variations */
 .btn.edit {
-    background-color: #28a745;
+    background-color: var(--green);
 }
 
 .btn.edit:hover {
-    background-color: #218838;
+    background-color: var(--dark-green);
 }
 
 .btn.delete {
@@ -43,5 +45,5 @@ th, td {
 }
 
 .btn.delete:hover {
-    background-color: #c82333;
+    background-color: var(--red);
 } 

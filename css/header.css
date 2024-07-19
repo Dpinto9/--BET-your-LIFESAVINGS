@@ -1,29 +1,89 @@
+:root {
+    --dark-green: #606c38;
+    --green: #283618;
+    --light-yellow: #fefae0;
+    --yellow: #dda15e;
+    --brown: #bc6c25;
+    --logo: #ff8c00;
+    --red: #950f13;
+    --darkgray: #161a1d;
+}
+
+body {
+    font-family: "Cinzel", serif;
+    font-weight: 500;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+/* TEXTO */
+.cinzel {
+    font-family: "Cinzel", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+/* LOGO */
+.rowdies-light {
+    font-family: "Rowdies", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+  
+.rowdies-regular {
+    font-family: "Rowdies", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+.rowdies-bold {
+    font-family: "Rowdies", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
 
 /* Header styles */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
-    color: white;
-    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    padding: 0px 30px 0px 15px;
+    margin: 20px auto; 
+    border-radius: 18px; 
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    width: 80%;
+    border: 1px solid black; 
 }
 
 .logo {
     font-size: 24px;
+    width: min-content;
+    display: flex;
+    align-items: center;
+}
+
+.logo img{
+    width: 33%;
+    border-radius: 26%;
+    border: 1px solid black;
 }
 
 .logo a {
-    color: white;
+    font-family: "Rowdies", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-    font-style: italic;
-    font-weight: bold;
 }
 
 .wallet {
     font-size: 18px;
+    margin-right: 5%;
 }
 
 .right-section {
@@ -31,12 +91,23 @@ header {
     align-items: center;
 }
 
-.notification {
-    margin-right: 20px;
+.bank-icon,
+.icon,
+.profile-icon {
+    font-size: 130%;
+    color: black;
+    border-radius: 41%; 
+    padding: 10px; 
+    margin: 0 4px; 
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.notification .icon {
-    font-size: 24px;
+.bank-icon:hover,
+.icon:hover,
+.profile-icon:hover {
+    background-color: var(--logo);
+    color: var(--green);
+
 }
 
 .profile-dropdown {
@@ -44,47 +115,94 @@ header {
     display: inline-block;
 }
 
-.profile-dropdown .profile {
+.profile-dropdown  {
+    display: flex;
+    align-items: center;
     cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    width: auto;
 }
 
 .dropdown-content {
+    margin-top: 263%;
     display: none;
     position: absolute;
     right: 0;
-    background-color: #f9f9f9;
-    min-width: 160px;
+    background-color: var(--light-yellow);
+    min-width: 200px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 8px;
     z-index: 1;
+    animation: fadeIn 0.3s ease;
+    overflow: hidden; 
 }
 
-.dropdown-content a {
-    color: black;
+.dropdown-content a,
+.dropdown-content button {
+    color: var(--green);
     padding: 12px 16px;
     text-decoration: none;
-    display: block;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    border: none;
+    width: 100%;
+    background: none;
+    cursor: pointer;
+    box-sizing: border-box; 
 }
 
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
+.dropdown-content a:hover,
+.dropdown-content button:hover {
+    background-color: var(--red);
+    color: var(--light-yellow);
+    border-radius: 0; 
 }
 
 .profile-dropdown:hover .dropdown-content {
     display: block;
 }
 
-.dropdown-content button[name="logout"] {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: lightcoral; 
-    color: white;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.dropdown-content button[name="logout"]:hover {
-    background-color: #c82333; 
+@media (max-width: 600px) {
+    header {
+        height: 100px;
+    }
+
+    .logo {
+        font-size: 0;
+    }
+
+    .logo img{
+        width: 200%;
+    }
+
+    .wallet {
+        font-size: 16px; 
+        margin-bottom: 10px; 
+        padding-left: 20%;
+    }
+
+    .right-section {
+        flex-direction: row; 
+    }
+
+    .bank-icon,
+    .icon,
+    .profile-icon {
+        font-size: 110%; 
+        padding: 8px;
+        margin: 0 2px;
+    }
 }
