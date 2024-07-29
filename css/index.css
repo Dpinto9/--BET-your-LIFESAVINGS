@@ -1,3 +1,14 @@
+@keyframes appear {
+  from {
+    opacity: 0;
+    scale: 0.5;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
 /* Title section */
 .title{
     width: 60%;
@@ -8,6 +19,10 @@
     font-size: 40px;
     font-style: normal;
     text-align: center;
+
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
 }
 
 .title img{
@@ -19,6 +34,10 @@
     width: 90%;
     margin: 20px auto; 
     padding: 20px;
+
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
 }
 
 .grid-container {
@@ -113,6 +132,12 @@
 }
 
 /* promoting section */
+.promotions-section {
+  animation: appear linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+
  .promotions-section .br {
     width: 80%;
   }
@@ -178,6 +203,10 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     opacity: 92%;
+
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
   }
   
   .responsible-gaming-section h2, .testimonials-section h2 {
@@ -223,6 +252,12 @@
   }
   
   /* testimonial Section */
+  .testimonials-section{
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+  }
+
   .testimonials-grid {
     width: 70%;
     margin: 0 auto;
