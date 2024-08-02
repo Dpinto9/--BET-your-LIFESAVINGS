@@ -50,7 +50,7 @@ $conn->close();
                         <td><?php echo $user['role']; ?></td>
                         <td>
                             <a href="php/CRUD/admin_update_user.php?id=<?php echo $user['id']; ?>" class="btn edit">Edit</a>
-                            <a href="php/CRUD/admin_delete_user.php?id=<?php echo $user['id']; ?>" class="btn delete">Delete</a>
+                            <a href="php/CRUD/admin_crud_handler.php?id=<?php echo $user['id']; ?>" class="btn delete">Delete</a>
                         </td>
                     </tr>
                     <?php endforeach; ?>

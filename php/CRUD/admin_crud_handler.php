@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
         $stmt_delete->close();
 
         // Reset auto-increment to the maximum id + 1
-        $sql_reset = "ALTER TABLE users AUTO_INCREMENT = (SELECT MAX(id) + 1 FROM users)";
+        $sql_reset = "ALTER TABLE users AUTO_INCREMENT = (SELECT COALESCE(MAX(id), 0) + 1 FROM users)";
         if ($conn->query($sql_reset) === TRUE) {
             $_SESSION['delete_message'] = "User deleted successfully!";
         } else {
@@ -84,7 +84,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
         $_SESSION['delete_message'] = "Error deleting user: " . $stmt_delete->error;
     }
 
-    $stmt->close();
     header("Location: ../../admin_crud.php");
     exit();
 }

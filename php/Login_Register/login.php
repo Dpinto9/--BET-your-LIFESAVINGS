@@ -1,6 +1,5 @@
 <?php
 include '../db.php';
-
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -25,13 +24,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../../index.php");
             exit;
         } else {
-            die("Invalid credentials.");
+            $error_message = urlencode("Invalid username or password.");
         }
     } else {
-        die("Invalid credentials.");
+        $error_message = urlencode("Invalid username or password.");
     }
 
     $stmt->close();
     $conn->close();
+    header("Location: ../../login.html?error=" . $error_message);
+    exit;
 }
 ?>

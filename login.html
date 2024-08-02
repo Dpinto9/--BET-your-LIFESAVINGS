@@ -3,20 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Welcome - BETyourLIFESAVINGS</title>
     <link rel="stylesheet" href="css/logins.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <!-- TEXTO -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+    <!-- LOGO -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Add Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="form-container">
-        <h2>Login</h2>
-        <form action="php/Login_Register/login.php" method="post">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit">Login</button>
-        </form>
-        <p>Don't have an account? <a href="register.html">Register here</a></p>
+    <div class="page-container">
+        <div class="svg-background">
+            <object id="rotating-svg" type="image/svg+xml" data="img/rotatingcolor.svg"></object>
+        </div>
+        <div class="title">
+            BETyourLIFESAVINGS
+        </div>
+        <main>
+            <form id="login" action="php/Login_Register/login.php" method="post">
+                <header>
+                    <h2>LOGIN</h2>
+                </header>
+                <!-- error mensage -->
+                <div id="error-message" class="error-message" style="display:none; margin-bottom: 10px;"></div>
+
+                <div class="wrapper">
+                    <i class="material-symbols-outlined">person</i>
+                    <input type="text" placeholder="Username" id="username" name="username" required/>
+                </div>
+                <div class="wrapper">
+                    <i class="material-symbols-outlined">lock</i>
+                    <input type="password" placeholder="Password" id="password" name="password" required/>
+                </div>
+                <div class="wrapper remember">
+                    <input id="check" type="checkbox" />
+                    <label for="check">Remember me</label>
+                </div>
+                    <button type="submit">LOGIN</button>
+                    <p class="footer">Don't have an account? <a onclick="swithMode()" >Sign up</a></p>
+            </form>
+
+            <form id="singup" action="php/Login_Register/register.php" method="post"><!--Sign Up Form-->
+                <header>
+                    <h2>SIGN UP</h2>
+                    <p>Singup here using your username and password</p>
+                </header>
+            <div class="wrapper">
+                <i class="material-symbols-outlined">person</i>
+                <input type="text" placeholder="Username" id="username" name="username" required/>
+            </div>
+            <div class="wrapper">
+                <i class="material-symbols-outlined">mail</i>
+                <input type="email" placeholder="Email" id="email" name="email" required/>
+            </div>
+            <div class="wrapper">
+                <i class="material-symbols-outlined">lock</i>
+                <input type="password" placeholder="Password" id="password" name="password" required/>
+            </div>
+            <div class="wrapper remember">
+                <input id="check1" type="checkbox" />
+                <label for="check1">i agree to term & coditions</label>
+            </div>
+                <button type="submit">LOGIN</button>
+                <p class="footer">already have an account?  <a onclick="swithMode()" href="#">Login</a></p>
+            </form>
+        </main>
+        <div class="base-sun">
+            <object id="" type="image/svg+xml" data="img/sun.svg"></object>
+            <div class="">
+                <p>Welcome to the best <span>Casino</span> Site</p>
+                <i id="stopCircle" class="material-symbols-outlined">stop_circle</i>
+            </div>
+        </div>
     </div>
+
+    <script>
+        function swithMode() {
+            document.body.classList.toggle("active");
+        }
+
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Function to remove URL parameter
+        function removeUrlParameter(parameter) {
+            var url = location.href;
+            var urlparts = url.split('?');
+
+            if (urlparts.length >= 2) {
+                var urlBase = urlparts.shift(); // Get base url
+                var queryString = urlparts.join("?"); // Join it back up
+
+                var prefix = encodeURIComponent(parameter) + '=';
+                var pars = queryString.split(/[&;]/g);
+                for (var i = pars.length; i-- > 0;) {
+                    if (pars[i].lastIndexOf(prefix, 0) !== -1) {
+                        pars.splice(i, 1);
+                    }
+                }
+                url = urlBase + (pars.length > 0 ? '?' + pars.join('&') : '');
+                history.replaceState(null, null, url); // Update the URL without reloading
+            }
+        }
+
+        // Display error message if present
+        document.addEventListener("DOMContentLoaded", function() {
+            var errorMessage = getUrlParameter('error');
+            if (errorMessage) {
+                var errorDiv = document.getElementById('error-message');
+                if (errorDiv) {
+                    errorDiv.textContent = errorMessage;
+                    errorDiv.style.display = 'block';
+                }
+                removeUrlParameter('error'); // Remove the error parameter after displaying
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const svgElement = document.getElementById('rotating-svg');
+            let isRotating = true; // Track the animation state
+
+            document.getElementById('stopCircle').addEventListener('click', function() {
+                if (isRotating) {
+                    console.log("Stopping the animation");
+                    svgElement.style.animation = 'none'; // Stop animation
+                } else {
+                    console.log("Starting the animation");
+                    // Temporarily set a different animation name to restart
+                    svgElement.style.animation = 'tempRotate 110s linear infinite';
+                    setTimeout(() => {
+                        svgElement.style.animation = 'rotate 110s linear infinite';
+                    }, 0); // Immediately switch back to the original
+                }
+                isRotating = !isRotating; // Toggle state
+                console.log("isRotating state:", isRotating);
+            });
+        });
+    
+      </script>
 </body>
 </html>
