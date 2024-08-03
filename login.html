@@ -89,46 +89,47 @@
         }
 
         // Function to get URL parameters
-        function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            var results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        }
+    function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
 
-        // Function to remove URL parameter
-        function removeUrlParameter(parameter) {
-            var url = location.href;
-            var urlparts = url.split('?');
+    // Function to remove URL parameter
+    function removeUrlParameter(parameter) {
+        var url = location.href;
+        var urlparts = url.split('?');
 
-            if (urlparts.length >= 2) {
-                var urlBase = urlparts.shift(); // Get base url
-                var queryString = urlparts.join("?"); // Join it back up
+        if (urlparts.length >= 2) {
+            var urlBase = urlparts.shift(); // Get base url
+            var queryString = urlparts.join("?"); // Join it back up
 
-                var prefix = encodeURIComponent(parameter) + '=';
-                var pars = queryString.split(/[&;]/g);
-                for (var i = pars.length; i-- > 0;) {
-                    if (pars[i].lastIndexOf(prefix, 0) !== -1) {
-                        pars.splice(i, 1);
-                    }
+            var prefix = encodeURIComponent(parameter) + '=';
+            var pars = queryString.split(/[&;]/g);
+            for (var i = pars.length; i-- > 0;) {
+                if (pars[i].lastIndexOf(prefix, 0) !== -1) {
+                    pars.splice(i, 1);
                 }
-                url = urlBase + (pars.length > 0 ? '?' + pars.join('&') : '');
-                history.replaceState(null, null, url); // Update the URL without reloading
             }
+            url = urlBase + (pars.length > 0 ? '?' + pars.join('&') : '');
+            history.replaceState(null, null, url); // Update the URL without reloading
         }
+    }
 
-        // Display error message if present
-        document.addEventListener("DOMContentLoaded", function() {
-            var errorMessage = getUrlParameter('error');
-            if (errorMessage) {
-                var errorDiv = document.getElementById('error-message');
-                if (errorDiv) {
-                    errorDiv.textContent = errorMessage;
-                    errorDiv.style.display = 'block';
-                }
-                removeUrlParameter('error'); // Remove the error parameter after displaying
+    // Display error messages based on the URL parameters
+    document.addEventListener("DOMContentLoaded", function() {
+        var signupError = getUrlParameter('error'); // Get the 'error' parameter value
+
+        if (signupError) {
+            var signupErrorDiv = document.getElementById('error-message');
+            if (signupErrorDiv) {
+                signupErrorDiv.textContent = signupError;
+                signupErrorDiv.style.display = 'block';
             }
-        });
+            removeUrlParameter('error'); // Remove the error parameter after displaying
+        }
+    });
 
         document.addEventListener('DOMContentLoaded', (event) => {
             const svgElement = document.getElementById('rotating-svg');
